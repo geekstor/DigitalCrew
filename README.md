@@ -186,18 +186,19 @@ Built by a team of hackers passionate about making AI accessible:
 ## 🚢 What's Next
 
 **Immediate (Post-Hackathon):**
-- Add more agent types (email, data analysis, customer support)
+- Enhanced agent generation (deeper analysis, more sophisticated customization)
 - Deploy to production (Vercel + Railway)
-- Launch beta with 10 pilot companies
+- Launch beta with 10 pilot companies across different industries
 
 **6-Month Vision:**
-- Agent marketplace (share custom agents)
-- Agent execution runtime (not just recommendations)
-- Enterprise features (team collaboration, audit logs)
+- Agent execution runtime (actually run the agents, not just recommend them)
+- Agent marketplace (share successful agent configurations)
+- Enterprise features (team collaboration, audit logs, compliance tracking)
 
 **Long-term:**
-- Become the "Zapier for AI agents"
-- Enable anyone to build, deploy, and share custom AI solutions
+- Become the "Zapier for AI agents" - fully automated business operations
+- Enable anyone to describe a problem and get a custom AI solution
+- Build the largest library of real-world business problems solved by AI
 
 ---
 
