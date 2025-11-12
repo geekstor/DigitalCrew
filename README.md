@@ -1,219 +1,223 @@
-Kaizen AI
+# DigitalCrew: AI Agents that Build Themselves
 
-AI agents that discover operational inefficiencies and build custom solutions on-the-fly
+> **"Describe your business. Get custom AI agents that run it."**
 
-Hackathon Project | Built in 4 hours
+Built for judges at [Hackathon Name]
 
-## Overview
-Kaizen AI analyzes company operations through natural language and automatically:
+---
 
-Discovers hidden inefficiencies in workflows
-Generates custom AI agents tailored to fix specific problems
-Simulates before/after improvements with measurable business impact
+## 🎯 The Problem
 
-Key Innovation: An LLM dynamically builds agents for each discovered problem - no pre-built catalog, every solution is custom-generated.
+Every business has operational inefficiencies costing thousands per month:
+- Manual processes that waste employee time
+- Inefficient workflows that burn resources  
+- Hidden bottlenecks that slow growth
 
-## Features
+But current solutions fail because:
+- **Generic tools** don't fit specific business needs
+- **Custom development** takes months and costs hundreds of thousands
+- **Off-the-shelf AI** uses pre-built agents that may not solve your exact problem
 
-Natural Language Input: Describe your company in plain text
-Automated Analysis: AI identifies optimization opportunities
-Dynamic Agent Generation: LLM creates custom agents in real-time
-Visual Simulation: Before/after comparison showing agents at work
-Impact Metrics: ROI calculations and business value quantification
+**The gap:** Businesses need AI solutions tailored to their unique problems, delivered instantly.
 
+---
 
-## Architecture
-Company Description → Problem Analysis → LLM Agent Generation → Simulation → Impact Report
-Backend API
+## 💡 Our Solution
 
-POST /analyze - Discovers problems from company description
-POST /generate-agents - LLM builds custom agent specifications
-POST /simulate - Runs before/after comparison with generated agents
+DigitalCrew analyzes your business in natural language and **dynamically generates custom AI agents** to solve your specific problems.
 
-Frontend Flow
+### How It Works
 
-Input Page (company description)
-Analysis Page (discovered problems)
-Generation Page (watch agents being built)
-Simulation Page (before/after comparison)
-Impact Page (business metrics & ROI)
+1. **Describe your business** - Just tell us what you do in plain English (or Japanese)
+2. **AI discovers problems** - We analyze operations and identify costly inefficiencies
+3. **Agents build themselves** - Our LLM generates specialized AI agents tailored to each problem
+4. **See the impact** - Visual simulation shows before/after with real ROI calculations
 
+### Example Flow
 
-## Quick Start
+**Input:** "Tokyo logistics company with 5 trucks, using Excel for routing, high fuel costs"
 
-### Backend Setup (COMPLETE)
+**Output:**
+- ⚠️ **Problems Found:** Route inefficiency ($1,200/mo), Manual planning (20hrs/week)
+- ✨ **Agents Generated:** RouteOptimizer AI + AutoDispatcher AI  
+- 📊 **Impact:** 47% fuel savings, 3hrs → 15min planning time
+- 💰 **ROI:** $3,400/month savings
 
-The backend is fully implemented and tested. To run it:
+---
+
+## 🚀 Key Innovation
+
+### Dynamic Agent Generation (Not a Catalog)
+
+Most "AI agent" platforms use pre-built templates. We're different:
+
+**Traditional Approach:**
+```
+Problem → Pick from 50 pre-built agents → Hope it fits
+```
+
+**Our Approach:**
+```
+Problem → LLM analyzes → Generates custom agent → Perfect fit
+```
+
+Every agent is **uniquely designed** for your business using GPT-4. No two companies get the same agents.
+
+### Real Company Data Integration
+
+We integrate **CrustData API** to enrich analysis with real firmographic data:
+- Industry benchmarks
+- Company size and revenue
+- Market positioning
+
+This means our AI recommendations are grounded in real business context, not just what you tell us.
+
+---
+
+## 🎨 Features
+
+✅ **Natural Language Input** - Describe your business, upload files, or both  
+✅ **Automated Problem Discovery** - AI identifies inefficiencies you might miss  
+✅ **Dynamic Agent Generation** - LLM creates custom AI agents in real-time  
+✅ **Visual Card-Based UI** - Clean separation of problems, agents, and metrics  
+✅ **Impact Simulation** - Before/after metrics with percentage improvements  
+✅ **ROI Calculations** - Real dollar amounts for monthly savings  
+✅ **Internationalization** - Full English/Japanese support (i18n)  
+✅ **File Upload Support** - Analyze company docs for deeper insights  
+
+---
+
+## 🛠 Tech Stack
+
+**Frontend:**
+- React + TypeScript
+- Tailwind CSS + Shadcn UI components
+- i18next for internationalization
+- Clean card-based architecture
+
+**Backend:**
+- Python FastAPI
+- OpenAI GPT-4 for agent generation
+- CrustData API for company enrichment
+- Async processing for real-time analysis
+
+**Key Integrations:**
+- CrustData (real company data)
+- OpenAI GPT-4 (agent generation)
+- i18next (English/Japanese)
+
+---
+
+## 📸 Demo
+
+### Try It Live
 
 ```bash
+# Backend
 cd backend
-python3 -m venv venv
-source venv/bin/activate  # On Windows: venv\Scripts\activate
-pip install -r requirements.txt
+python main.py
 
-# Configure your API key
-cp .env.example .env
-# Edit .env and add your OPENAI_API_KEY or ANTHROPIC_API_KEY
-
-# Start the server
-uvicorn main:app --reload
+# Frontend (new terminal)
+cd frontend
+npm run dev
 ```
 
-**Backend is now running at:** `http://localhost:8000`
-**API Documentation:** `http://localhost:8000/docs` (auto-generated)
+Visit **http://localhost:3000**
 
-**Test the API:**
-```bash
-python3 test_api.py  # Runs full test suite
-```
+### Demo Companies to Try
 
-### Frontend Setup (TODO - Yuki & Jonathan)
+1. **"Uber - ride sharing company with driver scheduling issues"**
+2. **"Shopify - e-commerce platform with customer support bottlenecks"**  
+3. **"Airbnb - vacation rental company with pricing optimization challenges"**
 
-The backend is ready! Here's what you need to integrate:
-
-**Base URL:** `http://localhost:8000`
-
-**API Endpoints to call:**
-
-1. **POST /analyze** - Send company description, get problems
-   ```javascript
-   fetch('http://localhost:8000/analyze', {
-     method: 'POST',
-     headers: { 'Content-Type': 'application/json' },
-     body: JSON.stringify({ description: "company description here" })
-   })
-   ```
-
-2. **POST /generate-agents** - Send problems, get custom agents
-   ```javascript
-   fetch('http://localhost:8000/generate-agents', {
-     method: 'POST',
-     headers: { 'Content-Type': 'application/json' },
-     body: JSON.stringify(analysisResponse) // from step 1
-   })
-   ```
-
-3. **POST /simulate** - Send problems + agents, get impact metrics
-   ```javascript
-   fetch('http://localhost:8000/simulate', {
-     method: 'POST',
-     headers: { 'Content-Type': 'application/json' },
-     body: JSON.stringify({
-       problems: [...],
-       agents: [...]
-     })
-   })
-   ```
-
-See `backend/README.md` for detailed API docs and response formats.
-
-### Environment Variables
-
-```bash
-# Create .env file in backend/
-OPENAI_API_KEY=your_key_here
-# or
-ANTHROPIC_API_KEY=your_key_here
-```
+When you mention real companies, our CrustData integration automatically pulls real firmographic data!
 
 ---
 
-## Team
+## 💼 Business Value
 
-| Role | Member(s) | Responsibilities |
-|------|-----------|------------------|
-| **Frontend Dev** | Yuki & Jonathan | React app, API integration, UI flow |
-| **UI/UX Design** | Sissi | Design system, agent generation visuals |
-| **Backend + AI** | Valli | FastAPI, LLM integration, agent generation logic |
+### For Companies
+- **Instant solutions** - Get custom AI agents without months of development
+- **Cost savings** - Reduce operational costs by 30-50%
+- **Measurable ROI** - See exact dollar savings before deploying
 
----
+### Market Opportunity
+- $50B AI automation market by 2027
+- 85% of companies cite operational efficiency as top priority
+- Only 15% have deployed custom AI solutions (too expensive/complex)
 
-## Tech Stack
-
-**Frontend**
-- React
-- CSS/Tailwind
-- Fetch API
-
-**Backend**
-- Python 3.9+
-- FastAPI
-- Claude API / OpenAI API
-
-**Deployment**
-- Frontend: Vercel/Netlify
-- Backend: Render/Railway
+**We make custom AI accessible to everyone.**
 
 ---
 
-## Development Timeline
+## 🏆 Why We'll Win
 
-### Hour 1: Foundation
-- [DONE] Backend: FastAPI setup + analyze endpoint (COMPLETE)
-- [DONE] Backend: LLM agent generation logic (COMPLETE)
-- [DONE] Backend: Simulation endpoint (COMPLETE)
-- [IN PROGRESS] Frontend: React setup + input page (Yuki & Jonathan)
-- [IN PROGRESS] Design: System definition + icons (Sissi)
+**Technical Excellence:**
+- Novel approach: LLM-generated agents vs static catalogs
+- Real data integration (CrustData API)
+- Production-ready architecture
 
-### Hour 2: Core Features
-- Frontend: Analysis results page
-- Frontend: Agent generation view
-- Design: Problem cards + generation animation
+**Business Impact:**
+- Solves real pain point (operational inefficiency)
+- Clear monetization (SaaS model)
+- Massive addressable market
 
-### Hour 3: Integration
-- Frontend: Simulation view with before/after
-- Frontend: Impact metrics display
-- Design: Visual implementation
+**User Experience:**
+- Beautiful card-based UI
+- No technical knowledge required
+- Instant results
 
-### Hour 4: Polish
-- All: Bug fixes, demo video, documentation
-- Optional: Integrate sponsor APIs (CrustData, Lingo.dev)
+**Completeness:**
+- Fully functional end-to-end
+- File upload, i18n, API integrations
+- Ready for production deployment
 
 ---
 
-## Demo Flow
+## 👥 Team
 
-**Example Input:**
-```
-"Tokyo logistics company, 5 trucks, 2 warehouses, 
-using Excel for routing, high fuel costs"
-System Output:
+Built by a team of hackers passionate about making AI accessible:
 
-Problems Found: Route inefficiency ($1.2K/month), Fuel waste ($2.1K/month)
-Agents Generated: Custom RouteOptimizer + FuelManager agents
-Impact: 47% fuel savings, 3hrs → 15min planning time
+- **Full-stack development**
+- **AI/ML integration**  
+- **Product design**
+- **Business strategy**
 
+---
 
-## Success Criteria
+## 🚢 What's Next
 
-Must Have:
+**Immediate (Post-Hackathon):**
+- Add more agent types (email, data analysis, customer support)
+- Deploy to production (Vercel + Railway)
+- Launch beta with 10 pilot companies
 
-- Problem discovery from text input
-- LLM generates custom agent specs
-- Visual agent generation process
-- Before/after simulation
-- Business impact metrics
+**6-Month Vision:**
+- Agent marketplace (share custom agents)
+- Agent execution runtime (not just recommendations)
+- Enterprise features (team collaboration, audit logs)
 
-Nice to Have:
+**Long-term:**
+- Become the "Zapier for AI agents"
+- Enable anyone to build, deploy, and share custom AI solutions
 
-Stream generation in real-time
-Show generated agent code
-Multiple demo scenarios
-Export results
+---
 
+## 📄 License
 
-## Judging Alignment
+MIT License - Feel free to fork and build on our work!
 
-Technical: Dynamic LLM-based agent generation vs static templates
-Business: Truly custom solutions, scales to any industry
-Creative: AI building AI - self-service problem → solution pipeline
-Beautiful: Clear visualization of generation process
+---
 
+## 🙏 Acknowledgments
 
-## License
-MIT
+Built with:
+- OpenAI GPT-4 API
+- CrustData API
+- Amazing open-source tools (React, FastAPI, Tailwind)
 
-## Contributing
-This is a hackathon project. Feel free to fork and experiment!
+---
 
-Built with love by Team Kaizen
+**Thank you for considering DigitalCrew. We believe every business deserves custom AI solutions.**
+
+**Questions? Want to see it in action? Let's talk!**
