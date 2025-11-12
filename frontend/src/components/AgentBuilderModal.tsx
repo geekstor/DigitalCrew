@@ -1,9 +1,10 @@
 import { useState } from "react";
-import { X, Upload, Mic, Send, Bot, User, Loader2 } from "lucide-react";
+import { X, Upload, Mic, Send, Bot, User, Loader2, AlertCircle, Sparkles, TrendingUp } from "lucide-react";
 import { Button } from "./ui/button";
 import { Input } from "./ui/input";
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "./ui/select";
 import { Progress } from "./ui/progress";
+import { Card } from "./ui/card";
 import { VoiceChatWindow } from "./VoiceChatWindow";
 import { apiClient, type AnalysisResponse, type GenerateAgentsResponse, type SimulationResponse } from "../services/api";
 
@@ -66,13 +67,9 @@ export function AgentBuilderModal({ onClose }: AgentBuilderModalProps) {
         setAnalysisData(analysis);
         setProgress(50);
         
-        const problemsList = analysis.problems.map(
-          (p, i) => `${i + 1}. ${p.title}: ${p.description}`
-        ).join('\n');
-        
         const analysisMessage: Message = {
           role: "ai",
-          content: `Great! I've analyzed your company and identified the following areas for improvement:\n\n${problemsList}\n\nNow, let me generate custom AI agents to solve these problems...`
+          content: `Great! I've analyzed your company and identified ${analysis.problems.length} key areas for improvement. Now generating custom AI agents...`
         };
         setMessages(prev => [...prev, analysisMessage]);
 
@@ -81,13 +78,9 @@ export function AgentBuilderModal({ onClose }: AgentBuilderModalProps) {
         setAgentsData(agents);
         setProgress(75);
         
-        const agentsList = agents.agents.map(
-          (a) => `• ${a.name}: ${a.description}`
-        ).join('\n');
-        
         const agentsMessage: Message = {
           role: "ai",
-          content: `Perfect! I've designed the following AI agents for your business:\n\n${agentsList}\n\nWould you like to see the simulated impact of implementing these agents?`
+          content: `Perfect! I've designed ${agents.agents.length} specialized AI agents for your business. Would you like to see the simulated impact?`
         };
         setMessages(prev => [...prev, agentsMessage]);
         
@@ -101,13 +94,9 @@ export function AgentBuilderModal({ onClose }: AgentBuilderModalProps) {
           setSimulationData(simulation);
           setProgress(100);
           
-          const metricsList = simulation.metrics.map(
-            (m) => `• ${m.metric_name}: ${m.before} → ${m.after} (${m.improvement_percent}% improvement)`
-          ).join('\n');
-          
           const simulationMessage: Message = {
             role: "ai",
-            content: `Excellent! Here's the projected impact of implementing these AI agents:\n\n${metricsList}\n\nEstimated Monthly Savings: $${simulation.total_monthly_savings.toLocaleString()}\n\n${simulation.roi_description}\n\nWould you like to proceed with deploying these agents?`
+            content: `Excellent! The simulation shows impressive results with an estimated monthly savings of $${simulation.total_monthly_savings.toLocaleString()}. ${simulation.roi_description}`
           };
           setMessages(prev => [...prev, simulationMessage]);
         } else {
@@ -241,7 +230,7 @@ export function AgentBuilderModal({ onClose }: AgentBuilderModalProps) {
             {/* Right Panel - Chat Interface */}
             <div className="flex-1 flex flex-col bg-white">
               {/* Messages */}
-              <div className="flex-1 overflow-y-auto p-6 space-y-4">
+              <div className="flex-1 overflow-y-auto p-6 space-y-6">
                 {messages.map((message, index) => (
                   <div 
                     key={index}
@@ -268,6 +257,93 @@ export function AgentBuilderModal({ onClose }: AgentBuilderModalProps) {
                     )}
                   </div>
                 ))}
+
+                {/* Problems Cards */}
+                {analysisData && (
+                  <div className="space-y-3">
+                    <div className="flex items-center gap-2 text-sm font-medium text-gray-700">
+                      <AlertCircle className="w-4 h-4" />
+                      <span>Identified Problems</span>
+                    </div>
+                    <div className="grid gap-3">
+                      {analysisData.problems.map((problem, idx) => (
+                        <Card key={idx} className="p-4 border-l-4 border-l-orange-500">
+                          <h4 className="font-semibold text-sm mb-2">{problem.title}</h4>
+                          <p className="text-xs text-gray-600 mb-2">{problem.description}</p>
+                          <div className="flex items-center justify-between">
+                            <span className="text-xs text-gray-500">{problem.impact}</span>
+                            <span className="text-xs font-semibold text-orange-600">
+                              ${problem.cost_per_month.toLocaleString()}/mo
+                            </span>
+                          </div>
+                        </Card>
+                      ))}
+                    </div>
+                  </div>
+                )}
+
+                {/* Agents Cards */}
+                {agentsData && (
+                  <div className="space-y-3">
+                    <div className="flex items-center gap-2 text-sm font-medium text-gray-700">
+                      <Sparkles className="w-4 h-4" />
+                      <span>AI Agents</span>
+                    </div>
+                    <div className="grid gap-3">
+                      {agentsData.agents.map((agent, idx) => (
+                        <Card key={idx} className="p-4 border-l-4 border-l-[#00C68E]">
+                          <h4 className="font-semibold text-sm mb-2">{agent.name}</h4>
+                          <p className="text-xs text-gray-600 mb-3">{agent.description}</p>
+                          <div className="flex flex-wrap gap-1 mb-2">
+                            {agent.capabilities.slice(0, 3).map((cap, capIdx) => (
+                              <span key={capIdx} className="text-xs px-2 py-1 bg-[#00C68E]/10 text-[#00C68E] rounded-full">
+                                {cap}
+                              </span>
+                            ))}
+                          </div>
+                          <div className="text-xs text-gray-500">
+                            Targets: {agent.target_problem}
+                          </div>
+                        </Card>
+                      ))}
+                    </div>
+                  </div>
+                )}
+
+                {/* Simulation Metrics Cards */}
+                {simulationData && (
+                  <div className="space-y-3">
+                    <div className="flex items-center gap-2 text-sm font-medium text-gray-700">
+                      <TrendingUp className="w-4 h-4" />
+                      <span>Impact Simulation</span>
+                    </div>
+                    <div className="grid gap-3">
+                      {simulationData.metrics.map((metric, idx) => (
+                        <Card key={idx} className="p-4 border-l-4 border-l-blue-500">
+                          <h4 className="font-semibold text-sm mb-2">{metric.metric_name}</h4>
+                          <div className="flex items-center justify-between mb-2">
+                            <span className="text-xs text-gray-500">Before: {metric.before}</span>
+                            <span className="text-xs text-gray-500">After: {metric.after}</span>
+                          </div>
+                          <div className="text-right">
+                            <span className="text-sm font-bold text-blue-600">
+                              +{metric.improvement_percent}% improvement
+                            </span>
+                          </div>
+                        </Card>
+                      ))}
+                      <Card className="p-4 bg-gradient-to-r from-green-50 to-emerald-50 border-green-200">
+                        <div className="text-center">
+                          <p className="text-xs text-gray-600 mb-1">Total Monthly Savings</p>
+                          <p className="text-2xl font-bold text-green-600">
+                            ${simulationData.total_monthly_savings.toLocaleString()}
+                          </p>
+                        </div>
+                      </Card>
+                    </div>
+                  </div>
+                )}
+
                 {isLoading && (
                   <div className="flex gap-3 justify-start">
                     <div className="w-8 h-8 rounded-full bg-[#00C68E]/10 flex items-center justify-center flex-shrink-0">
