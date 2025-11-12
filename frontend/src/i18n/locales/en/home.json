@@ -1,0 +1,10 @@
+{
+  "hero": {
+    "title": "Kaizen AI",
+    "subtitle": "AI agents that discover operational inefficiencies and build custom solutions on-the-fly"
+  },
+  "content": {
+    "ready": "Frontend is ready for UI design implementation.",
+    "waiting": "Waiting for design specifications..."
+  }
+}
