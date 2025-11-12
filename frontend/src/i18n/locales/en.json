@@ -1,0 +1,63 @@
+{
+  "hero": {
+    "title": "Describe your business. Get an AI Agent that runs it for you.",
+    "subtitle": "Transform your business operations with intelligent AI agents that understand your needs and automate complex workflows.",
+    "generateButton": "Generate my Agent",
+    "demoButton": "Watch Demo"
+  },
+  "howItWorks": {
+    "title": "How It Works",
+    "subtitle": "Five simple steps from description to deployment",
+    "steps": {
+      "companyDescription": {
+        "title": "Company Description",
+        "description": "Tell us about your business, goals, and current processes."
+      },
+      "analysisEngine": {
+        "title": "Analysis Engine",
+        "description": "AI analyzes your operations and identifies automation opportunities."
+      },
+      "agentDiscovery": {
+        "title": "Agent Discovery",
+        "description": "Get matched with specialized AI agents for your specific needs."
+      },
+      "deployment": {
+        "title": "Deployment",
+        "description": "Launch your agents with one click—no coding required."
+      },
+      "performanceMonitoring": {
+        "title": "Performance Monitoring",
+        "description": "Track efficiency gains and optimize agent performance over time."
+      }
+    }
+  },
+  "features": {
+    "noCodeSetup": {
+      "title": "No-Code Setup",
+      "description": "Build and deploy AI agents without writing a single line of code. Our intuitive interface makes automation accessible to everyone."
+    },
+    "smartTaskAnalysis": {
+      "title": "Smart Task Analysis",
+      "description": "Advanced AI understands your workflows and automatically identifies the best automation opportunities for maximum impact."
+    },
+    "continuousOptimization": {
+      "title": "Continuous Optimization",
+      "description": "Your agents learn and improve over time, adapting to changes in your business for sustained performance gains."
+    }
+  },
+  "modal": {
+    "title": "AI Agent Builder",
+    "subtitle": "Configure your intelligent automation assistant",
+    "setupProgress": "Setup Progress",
+    "industry": "Industry",
+    "selectIndustry": "Select your industry",
+    "uploadFiles": "Upload Files",
+    "uploadHint": "Upload files to help the AI understand your company better.",
+    "messagePlaceholder": "Describe what you need your AI agent to do...",
+    "analyzing": "Analyzing your requirements...",
+    "initialMessage": "Hello! I'm here to help you build the perfect AI agent for your business. Let's start by understanding what you need. Please describe your company and the main tasks you'd like to automate."
+  },
+  "footer": {
+    "copyright": "© 2025 AI Agent Builder"
+  }
+}

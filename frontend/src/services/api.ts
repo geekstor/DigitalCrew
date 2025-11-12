@@ -69,10 +69,31 @@ class ApiClient {
     }
   }
 
-  async analyzeCompany(description: string): Promise<AnalysisResponse> {
+  async uploadFiles(files: File[]): Promise<{ uploaded_files: any[], file_contents: string[], message: string }> {
+    const formData = new FormData();
+    files.forEach(file => formData.append('files', file));
+
+    const url = `${this.baseUrl}/upload`;
+    const response = await fetch(url, {
+      method: 'POST',
+      body: formData,
+    });
+
+    if (!response.ok) {
+      const errorData = await response.json().catch(() => null);
+      throw new Error(errorData?.detail || `Upload failed: ${response.statusText}`);
+    }
+
+    return await response.json();
+  }
+
+  async analyzeCompany(description: string, fileContents?: string[]): Promise<AnalysisResponse> {
     return this.fetchApi<AnalysisResponse>('/analyze', {
       method: 'POST',
-      body: JSON.stringify({ description }),
+      body: JSON.stringify({ 
+        description,
+        file_contents: fileContents 
+      }),
     });
   }
 

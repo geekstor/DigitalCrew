@@ -1,0 +1,63 @@
+{
+  "hero": {
+    "title": "ビジネスを説明するだけで、AIエージェントが運営します。",
+    "subtitle": "あなたのニーズを理解し、複雑なワークフローを自動化するインテリジェントなAIエージェントで、ビジネス運営を変革します。",
+    "generateButton": "エージェントを生成",
+    "demoButton": "デモを見る"
+  },
+  "howItWorks": {
+    "title": "仕組み",
+    "subtitle": "説明から展開まで5つの簡単なステップ",
+    "steps": {
+      "companyDescription": {
+        "title": "会社説明",
+        "description": "ビジネス、目標、現在のプロセスについて教えてください。"
+      },
+      "analysisEngine": {
+        "title": "分析エンジン",
+        "description": "AIが業務を分析し、自動化の機会を特定します。"
+      },
+      "agentDiscovery": {
+        "title": "エージェント発見",
+        "description": "特定のニーズに合わせた専門AIエージェントとマッチングします。"
+      },
+      "deployment": {
+        "title": "デプロイメント",
+        "description": "ワンクリックでエージェントを起動—コーディング不要。"
+      },
+      "performanceMonitoring": {
+        "title": "パフォーマンス監視",
+        "description": "効率向上を追跡し、時間の経過とともにエージェントのパフォーマンスを最適化します。"
+      }
+    }
+  },
+  "features": {
+    "noCodeSetup": {
+      "title": "ノーコード設定",
+      "description": "コードを一行も書かずにAIエージェントを構築・展開。直感的なインターフェースで、誰でも自動化にアクセスできます。"
+    },
+    "smartTaskAnalysis": {
+      "title": "スマートタスク分析",
+      "description": "高度なAIがワークフローを理解し、最大の効果を得るための最適な自動化の機会を自動的に特定します。"
+    },
+    "continuousOptimization": {
+      "title": "継続的な最適化",
+      "description": "エージェントは時間とともに学習・改善し、ビジネスの変化に適応して持続的なパフォーマンスの向上を実現します。"
+    }
+  },
+  "modal": {
+    "title": "AIエージェントビルダー",
+    "subtitle": "インテリジェント自動化アシスタントを設定",
+    "setupProgress": "セットアップ進行状況",
+    "industry": "業界",
+    "selectIndustry": "業界を選択",
+    "uploadFiles": "ファイルをアップロード",
+    "uploadHint": "AIが会社をよりよく理解するためにファイルをアップロードしてください。",
+    "messagePlaceholder": "AIエージェントに何をしてほしいか説明してください...",
+    "analyzing": "要件を分析中...",
+    "initialMessage": "こんにちは！ビジネスに最適なAIエージェントを構築するお手伝いをします。まず、必要なことを理解しましょう。会社と自動化したい主なタスクについて説明してください。"
+  },
+  "footer": {
+    "copyright": "© 2025 AIエージェントビルダー"
+  }
+}

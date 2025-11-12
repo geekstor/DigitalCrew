@@ -1,11 +1,14 @@
 import { Button } from "./ui/button";
 import { Play } from "lucide-react";
+import { useTranslation } from "react-i18next";
 
 interface HeroSectionProps {
   onGenerateClick: () => void;
 }
 
 export function HeroSection({ onGenerateClick }: HeroSectionProps) {
+  const { t } = useTranslation();
+  
   return (
     <section className="py-20 px-6 md:px-12 lg:px-24">
       <div className="max-w-7xl mx-auto">
@@ -13,10 +16,10 @@ export function HeroSection({ onGenerateClick }: HeroSectionProps) {
           {/* Left Content */}
           <div className="space-y-6">
             <h1 className="text-5xl md:text-6xl lg:text-7xl tracking-tight">
-              Describe your business. Get an AI Agent that runs it for you.
+              {t('hero.title')}
             </h1>
             <p className="text-xl text-muted-foreground max-w-xl">
-              Transform your business operations with intelligent AI agents that understand your needs and automate complex workflows.
+              {t('hero.subtitle')}
             </p>
             <div className="flex flex-col sm:flex-row gap-4 pt-4">
               <Button 
@@ -24,7 +27,7 @@ export function HeroSection({ onGenerateClick }: HeroSectionProps) {
                 className="bg-[#00C68E] hover:bg-[#00B380] text-white rounded-full px-8 shadow-lg shadow-[#00C68E]/20"
                 onClick={onGenerateClick}
               >
-                Generate my Agent
+                {t('hero.generateButton')}
               </Button>
               <Button 
                 size="lg" 
@@ -32,7 +35,7 @@ export function HeroSection({ onGenerateClick }: HeroSectionProps) {
                 className="rounded-full px-8 border-2"
               >
                 <Play className="mr-2 h-4 w-4" />
-                Watch Demo
+                {t('hero.demoButton')}
               </Button>
             </div>
           </div>

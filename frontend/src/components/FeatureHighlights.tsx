@@ -1,24 +1,27 @@
 import { Zap, Target, TrendingUp } from "lucide-react";
-
-const features = [
-  {
-    icon: Zap,
-    title: "No-Code Setup",
-    description: "Build and deploy AI agents without writing a single line of code. Our intuitive interface makes automation accessible to everyone."
-  },
-  {
-    icon: Target,
-    title: "Smart Task Analysis",
-    description: "Advanced AI understands your workflows and automatically identifies the best automation opportunities for maximum impact."
-  },
-  {
-    icon: TrendingUp,
-    title: "Continuous Optimization",
-    description: "Your agents learn and improve over time, adapting to changes in your business for sustained performance gains."
-  }
-];
+import { useTranslation } from "react-i18next";
 
 export function FeatureHighlights() {
+  const { t } = useTranslation();
+  
+  const features = [
+    {
+      icon: Zap,
+      title: t('features.noCodeSetup.title'),
+      description: t('features.noCodeSetup.description')
+    },
+    {
+      icon: Target,
+      title: t('features.smartTaskAnalysis.title'),
+      description: t('features.smartTaskAnalysis.description')
+    },
+    {
+      icon: TrendingUp,
+      title: t('features.continuousOptimization.title'),
+      description: t('features.continuousOptimization.description')
+    }
+  ];
+
   return (
     <section className="py-20 px-6 md:px-12 lg:px-24">
       <div className="max-w-7xl mx-auto">

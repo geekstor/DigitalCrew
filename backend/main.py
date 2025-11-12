@@ -1,4 +1,4 @@
-from fastapi import FastAPI, HTTPException
+from fastapi import FastAPI, HTTPException, UploadFile, File
 from fastapi.middleware.cors import CORSMiddleware
 from pydantic import BaseModel
 from typing import List, Optional
@@ -7,6 +7,9 @@ import json
 from dotenv import load_dotenv
 import anthropic
 import openai
+from pathlib import Path
+import shutil
+import httpx
 
 # Load environment variables
 load_dotenv()
@@ -25,14 +28,20 @@ app.add_middleware(
 # Initialize AI clients
 ANTHROPIC_API_KEY = os.getenv("ANTHROPIC_API_KEY") # we're not using anthropic rn
 OPENAI_API_KEY = os.getenv("OPENAI_API_KEY")
+CRUSTDATA_API_KEY = os.getenv("CRUSTDATA_API_KEY")
 
 anthropic_client = anthropic.Anthropic(api_key=ANTHROPIC_API_KEY) if ANTHROPIC_API_KEY else None
 openai_client = openai.OpenAI(api_key=OPENAI_API_KEY) if OPENAI_API_KEY else None
+
+# Create uploads directory if it doesn't exist
+UPLOAD_DIR = Path("uploads")
+UPLOAD_DIR.mkdir(exist_ok=True)
 
 
 # Request/Response Models
 class CompanyInput(BaseModel):
     description: str
+    file_contents: Optional[List[str]] = None  # Optional text content from uploaded files
 
 
 class Problem(BaseModel):
@@ -108,30 +117,127 @@ def call_llm(prompt: str, system_prompt: str = "") -> str:
     raise HTTPException(status_code=500, detail="No LLM API key configured")
 
 
+# CrustData helper function
+async def enrich_with_crustdata(company_name: str) -> Optional[dict]:
+    """Fetch real company data from CrustData API"""
+    if not CRUSTDATA_API_KEY:
+        return None
+    
+    try:
+        async with httpx.AsyncClient() as client:
+            # Search for company
+            response = await client.get(
+                "https://api.crustdata.com/screener/company/search",
+                params={"name": company_name},
+                headers={"Authorization": f"Bearer {CRUSTDATA_API_KEY}"},
+                timeout=5.0
+            )
+            
+            if response.status_code == 200:
+                data = response.json()
+                if data and len(data) > 0:
+                    company = data[0]
+                    return {
+                        "name": company.get("name"),
+                        "website": company.get("website"),
+                        "industry": company.get("industry"),
+                        "employee_count": company.get("employee_count"),
+                        "revenue": company.get("revenue"),
+                        "description": company.get("description")
+                    }
+    except Exception as e:
+        print(f"CrustData API error: {e}")
+    
+    return None
+
+
 # Endpoints
 @app.get("/")
 def read_root():
     return {
         "message": "Kaizen AI API",
         "version": "1.0",
-        "endpoints": ["/analyze", "/generate-agents", "/simulate"]
+        "endpoints": ["/analyze", "/generate-agents", "/simulate", "/upload"]
+    }
+
+
+@app.post("/upload")
+async def upload_files(files: List[UploadFile] = File(...)):
+    """
+    Upload files to help understand the company better.
+    Extracts text content from supported file types.
+    """
+    uploaded_files = []
+    file_contents = []
+    
+    for file in files:
+        try:
+            # Save file
+            file_path = UPLOAD_DIR / file.filename
+            with file_path.open("wb") as buffer:
+                shutil.copyfileobj(file.file, buffer)
+            
+            # Try to extract text content for analysis
+            content = None
+            if file.filename.endswith(('.txt', '.md', '.csv')):
+                try:
+                    with file_path.open("r", encoding="utf-8") as f:
+                        content = f.read()
+                        file_contents.append(content)
+                except Exception as e:
+                    print(f"Could not read {file.filename}: {e}")
+            
+            uploaded_files.append({
+                "filename": file.filename,
+                "size": file_path.stat().st_size,
+                "path": str(file_path),
+                "has_content": content is not None
+            })
+            
+        except Exception as e:
+            raise HTTPException(status_code=500, detail=f"Failed to upload {file.filename}: {str(e)}")
+    
+    return {
+        "uploaded_files": uploaded_files,
+        "file_contents": file_contents,
+        "message": f"Successfully uploaded {len(files)} file(s)"
     }
 
 
 @app.post("/analyze", response_model=AnalysisResponse)
-def analyze_company(input_data: CompanyInput):
+async def analyze_company(input_data: CompanyInput):
     """
     Analyzes company description and identifies operational inefficiencies.
+    Enriched with real company data from CrustData when available.
     """
 
     system_prompt = """You are an expert business operations analyst. Your job is to identify
     operational inefficiencies, bottlenecks, and improvement opportunities in companies."""
 
+    # Try to extract company name and enrich with CrustData
+    company_data_context = ""
+    try:
+        # Extract company name from description (simple heuristic)
+        words = input_data.description.split()
+        potential_names = [w for w in words if w[0].isupper() and len(w) > 3]
+        if potential_names:
+            company_name = potential_names[0]
+            company_data = await enrich_with_crustdata(company_name)
+            if company_data:
+                company_data_context = f"\n\nReal company data from CrustData:\n{json.dumps(company_data, indent=2)}"
+    except Exception as e:
+        print(f"Error enriching with CrustData: {e}")
+
+    # Include file contents if provided
+    file_context = ""
+    if input_data.file_contents:
+        file_context = "\n\nAdditional context from uploaded files:\n" + "\n\n".join(input_data.file_contents[:3])
+
     prompt = f"""Analyze this company description and identify 2-4 specific operational problems
     that could be improved with AI automation or optimization.
 
 Company Description:
-{input_data.description}
+{input_data.description}{company_data_context}{file_context}
 
 For each problem, provide:
 1. A clear title

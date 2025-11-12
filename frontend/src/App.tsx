@@ -2,9 +2,9 @@ import { useState } from "react";
 import { HeroSection } from "./components/HeroSection";
 import { HowItWorks } from "./components/HowItWorks";
 import { FeatureHighlights } from "./components/FeatureHighlights";
-import { DashboardPreview } from "./components/DashboardPreview";
 import { Footer } from "./components/Footer";
 import { AgentBuilderModal } from "./components/AgentBuilderModal";
+import { LanguageSwitcher } from "./components/LanguageSwitcher";
 
 export default function App() {
   const [showAgentBuilder, setShowAgentBuilder] = useState(false);
@@ -24,17 +24,9 @@ export default function App() {
             </div>
 
             {/* Nav Links */}
-            <div className="hidden md:flex items-center gap-8">
-              <a href="#" className="text-muted-foreground hover:text-foreground transition-colors">
-                Features
-              </a>
-              <a href="#" className="text-muted-foreground hover:text-foreground transition-colors">
-                Pricing
-              </a>
-              <a href="#" className="text-muted-foreground hover:text-foreground transition-colors">
-                Docs
-              </a>
-              <button 
+            <div className="hidden md:flex items-center gap-4">
+              <LanguageSwitcher />
+              <button
                 onClick={() => setShowAgentBuilder(true)}
                 className="px-6 py-2 bg-[#00C68E] hover:bg-[#00B380] text-white rounded-full transition-colors"
               >
@@ -50,7 +42,6 @@ export default function App() {
         <HeroSection onGenerateClick={() => setShowAgentBuilder(true)} />
         <HowItWorks />
         <FeatureHighlights />
-        <DashboardPreview />
       </main>
 
       {/* Footer */}
