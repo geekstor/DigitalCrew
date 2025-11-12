@@ -39,21 +39,80 @@ Impact Page (business metrics & ROI)
 
 
 🚀 Quick Start
-Backend Setup
-bashcd backend
-python -m venv venv
+
+## Backend Setup (✅ COMPLETE!)
+
+The backend is fully implemented and tested. To run it:
+
+```bash
+cd backend
+python3 -m venv venv
 source venv/bin/activate  # On Windows: venv\Scripts\activate
 pip install -r requirements.txt
+
+# Configure your API key
+cp .env.example .env
+# Edit .env and add your OPENAI_API_KEY or ANTHROPIC_API_KEY
+
+# Start the server
 uvicorn main:app --reload
-Frontend Setup
-bashcd frontend
-npm install
-npm start
-Environment Variables
-bash# Create .env file in backend/
-ANTHROPIC_API_KEY=your_key_here
-# or
+```
+
+**Backend is now running at:** `http://localhost:8000`
+**API Documentation:** `http://localhost:8000/docs` (auto-generated)
+
+**Test the API:**
+```bash
+python3 test_api.py  # Runs full test suite
+```
+
+## Frontend Setup (TODO - Yuki & Jonathan)
+
+The backend is ready! Here's what you need to integrate:
+
+**Base URL:** `http://localhost:8000`
+
+**API Endpoints to call:**
+
+1. **POST /analyze** - Send company description, get problems
+   ```javascript
+   fetch('http://localhost:8000/analyze', {
+     method: 'POST',
+     headers: { 'Content-Type': 'application/json' },
+     body: JSON.stringify({ description: "company description here" })
+   })
+   ```
+
+2. **POST /generate-agents** - Send problems, get custom agents
+   ```javascript
+   fetch('http://localhost:8000/generate-agents', {
+     method: 'POST',
+     headers: { 'Content-Type': 'application/json' },
+     body: JSON.stringify(analysisResponse) // from step 1
+   })
+   ```
+
+3. **POST /simulate** - Send problems + agents, get impact metrics
+   ```javascript
+   fetch('http://localhost:8000/simulate', {
+     method: 'POST',
+     headers: { 'Content-Type': 'application/json' },
+     body: JSON.stringify({
+       problems: [...],
+       agents: [...]
+     })
+   })
+   ```
+
+See `backend/README.md` for detailed API docs and response formats.
+
+## Environment Variables
+
+```bash
+# Create .env file in backend/
 OPENAI_API_KEY=your_key_here
+# or
+ANTHROPIC_API_KEY=your_key_here
 ```
 
 ---
@@ -88,23 +147,26 @@ OPENAI_API_KEY=your_key_here
 
 ## 📋 Development Timeline
 
-### Hour 1: Foundation
-- Backend: FastAPI setup + analyze endpoint
-- Frontend: React setup + input page
-- Design: System definition + icons
+### Hour 1: Foundation ✅
+- ✅ Backend: FastAPI setup + analyze endpoint (COMPLETE)
+- ✅ Backend: LLM agent generation logic (COMPLETE)
+- ✅ Backend: Simulation endpoint (COMPLETE)
+- 🔄 Frontend: React setup + input page (IN PROGRESS - Yuki & Jonathan)
+- 🔄 Design: System definition + icons (IN PROGRESS - Sissi)
 
 ### Hour 2: Core Features
-- Backend: LLM agent generation logic
 - Frontend: Analysis results page
+- Frontend: Agent generation view
 - Design: Problem cards + generation animation
 
 ### Hour 3: Integration
-- Backend: Simulation endpoint
-- Frontend: Agent generation view + simulation
+- Frontend: Simulation view with before/after
+- Frontend: Impact metrics display
 - Design: Visual implementation
 
 ### Hour 4: Polish
 - All: Bug fixes, demo video, documentation
+- Optional: Integrate sponsor APIs (CrustData, Lingo.dev)
 
 ---
 
