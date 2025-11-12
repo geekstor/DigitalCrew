@@ -216,6 +216,44 @@ Built with:
 
 ---
 
+## 🛠 Built With
+
+**Frontend Technologies:**
+- React 18 & TypeScript
+- Vite (Build tool)
+- Tailwind CSS 4
+- Radix UI (Component primitives)
+- i18next & react-i18next (Internationalization)
+- Lucide React (Icons)
+- Recharts (Data visualization)
+- React Hook Form (Form handling)
+- Embla Carousel (Carousels)
+- Sonner (Toast notifications)
+- Vaul (Drawer component)
+
+**Backend Technologies:**
+- Python 3.9+
+- FastAPI (Web framework)
+- Uvicorn (ASGI server)
+- OpenAI Python SDK
+- Anthropic Python SDK
+- Pydantic (Data validation)
+- httpx (HTTP client)
+- python-dotenv (Environment management)
+- python-multipart (File uploads)
+
+**APIs & Services:**
+- OpenAI GPT-4 API
+- Anthropic Claude API
+- CrustData API
+
+**Development Tools:**
+- Git & GitHub
+- npm & pip
+- VS Code
+
+---
+
 **Thank you for considering DigitalCrew. We believe every business deserves custom AI solutions.**
 
 **Questions? Want to see it in action? Let's talk!**
