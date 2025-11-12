@@ -23,7 +23,7 @@ app.add_middleware(
 )
 
 # Initialize AI clients
-ANTHROPIC_API_KEY = os.getenv("ANTHROPIC_API_KEY")
+ANTHROPIC_API_KEY = os.getenv("ANTHROPIC_API_KEY") # we're not using anthropic rn
 OPENAI_API_KEY = os.getenv("OPENAI_API_KEY")
 
 anthropic_client = anthropic.Anthropic(api_key=ANTHROPIC_API_KEY) if ANTHROPIC_API_KEY else None
