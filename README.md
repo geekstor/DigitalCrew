@@ -4,7 +4,7 @@
 
 ---
 
-## 🎯 The Problem
+## The Problem
 
 Every business has operational inefficiencies costing thousands per month:
 - Manual processes that waste employee time
@@ -20,7 +20,7 @@ But current solutions fail because:
 
 ---
 
-## 💡 Our Solution
+## Our Solution
 
 DigitalCrew analyzes your business in natural language and **dynamically generates custom AI agents** to solve your specific problems.
 
@@ -36,14 +36,14 @@ DigitalCrew analyzes your business in natural language and **dynamically generat
 **Input:** "Tokyo logistics company with 5 trucks, using Excel for routing, high fuel costs"
 
 **Output:**
-- ⚠️ **Problems Found:** Route inefficiency ($1,200/mo), Manual planning (20hrs/week)
-- ✨ **Agents Generated:** RouteOptimizer AI + AutoDispatcher AI  
-- 📊 **Impact:** 47% fuel savings, 3hrs → 15min planning time
-- 💰 **ROI:** $3,400/month savings
+- **Problems Found:** Route inefficiency ($1,200/mo), Manual planning (20hrs/week)
+- **Agents Generated:** RouteOptimizer AI + AutoDispatcher AI  
+- **Impact:** 47% fuel savings, 3hrs → 15min planning time
+- **ROI:** $3,400/month savings
 
 ---
 
-## 🚀 Key Innovation
+## Key Innovation
 
 ### Dynamic Agent Generation (Not a Catalog)
 
@@ -72,20 +72,20 @@ This means our AI recommendations are grounded in real business context, not jus
 
 ---
 
-## 🎨 Features
+## Features
 
-✅ **Natural Language Input** - Describe your business, upload files, or both  
-✅ **Automated Problem Discovery** - AI identifies inefficiencies you might miss  
-✅ **Dynamic Agent Generation** - LLM creates custom AI agents in real-time  
-✅ **Visual Card-Based UI** - Clean separation of problems, agents, and metrics  
-✅ **Impact Simulation** - Before/after metrics with percentage improvements  
-✅ **ROI Calculations** - Real dollar amounts for monthly savings  
-✅ **Internationalization** - Full English/Japanese support (i18n)  
-✅ **File Upload Support** - Analyze company docs for deeper insights  
+- **Natural Language Input** - Describe your business, upload files, or both  
+- **Automated Problem Discovery** - AI identifies inefficiencies you might miss  
+- **Dynamic Agent Generation** - LLM creates custom AI agents in real-time  
+- **Visual Card-Based UI** - Clean separation of problems, agents, and metrics  
+- **Impact Simulation** - Before/after metrics with percentage improvements  
+- **ROI Calculations** - Real dollar amounts for monthly savings  
+- **Internationalization** - Full English/Japanese support (i18n)  
+- **File Upload Support** - Analyze company docs for deeper insights  
 
 ---
 
-## 🛠 Tech Stack
+## Tech Stack
 
 **Frontend:**
 - React + TypeScript
@@ -106,7 +106,7 @@ This means our AI recommendations are grounded in real business context, not jus
 
 ---
 
-## 📸 Demo
+## Demo
 
 ### Try It Live
 
@@ -132,7 +132,7 @@ When you mention real companies, our CrustData integration automatically pulls r
 
 ---
 
-## 💼 Business Value
+## Business Value
 
 ### For Companies
 - **Instant solutions** - Get custom AI agents without months of development
@@ -148,7 +148,7 @@ When you mention real companies, our CrustData integration automatically pulls r
 
 ---
 
-## 🏆 Why We'll Win
+## Why We'll Win
 
 **Technical Excellence:**
 - Novel approach: LLM-generated agents vs static catalogs
@@ -172,7 +172,7 @@ When you mention real companies, our CrustData integration automatically pulls r
 
 ---
 
-## 👥 Team
+## Team
 
 Built by a team of hackers passionate about making AI accessible:
 
@@ -183,7 +183,7 @@ Built by a team of hackers passionate about making AI accessible:
 
 ---
 
-## 🚢 What's Next
+## What's Next
 
 **Immediate (Post-Hackathon):**
 - Enhanced agent generation (deeper analysis, more sophisticated customization)
@@ -202,13 +202,13 @@ Built by a team of hackers passionate about making AI accessible:
 
 ---
 
-## 📄 License
+## License
 
 MIT License - Feel free to fork and build on our work!
 
 ---
 
-## 🙏 Acknowledgments
+## Acknowledgments
 
 Built with:
 - OpenAI GPT-4 API
@@ -217,7 +217,7 @@ Built with:
 
 ---
 
-## 🛠 Built With
+## Built With
 
 **Frontend Technologies:**
 - React 18 & TypeScript
