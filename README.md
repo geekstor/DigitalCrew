@@ -1,9 +1,10 @@
-Kaizen AI 🤖
+Kaizen AI
 
 AI agents that discover operational inefficiencies and build custom solutions on-the-fly
 
 Hackathon Project | Built in 4 hours
-🎯 Overview
+
+## Overview
 Kaizen AI analyzes company operations through natural language and automatically:
 
 Discovers hidden inefficiencies in workflows
@@ -12,7 +13,7 @@ Simulates before/after improvements with measurable business impact
 
 Key Innovation: An LLM dynamically builds agents for each discovered problem - no pre-built catalog, every solution is custom-generated.
 
-✨ Features
+## Features
 
 Natural Language Input: Describe your company in plain text
 Automated Analysis: AI identifies optimization opportunities
@@ -20,8 +21,7 @@ Dynamic Agent Generation: LLM creates custom agents in real-time
 Visual Simulation: Before/after comparison showing agents at work
 Impact Metrics: ROI calculations and business value quantification
 
-
-🏗️ Architecture
+## Architecture
 Company Description → Problem Analysis → LLM Agent Generation → Simulation → Impact Report
 Backend API
 
@@ -37,8 +37,7 @@ Generation Page (watch agents being built)
 Simulation Page (before/after comparison)
 Impact Page (business metrics & ROI)
 
-
-🚀 Quick Start
+## Quick Start
 Backend Setup
 bashcd backend
 python -m venv venv
@@ -58,7 +57,7 @@ OPENAI_API_KEY=your_key_here
 
 ---
 
-## 👥 Team
+## Team
 
 | Role | Member(s) | Responsibilities |
 |------|-----------|------------------|
@@ -68,7 +67,7 @@ OPENAI_API_KEY=your_key_here
 
 ---
 
-## 🛠️ Tech Stack
+## Tech Stack
 
 **Frontend**
 - React
@@ -86,7 +85,7 @@ OPENAI_API_KEY=your_key_here
 
 ---
 
-## 📋 Development Timeline
+## Development Timeline
 
 ### Hour 1: Foundation
 - Backend: FastAPI setup + analyze endpoint
@@ -108,7 +107,7 @@ OPENAI_API_KEY=your_key_here
 
 ---
 
-## 🎬 Demo Flow
+## Demo Flow
 
 **Example Input:**
 ```
@@ -120,15 +119,14 @@ Problems Found: Route inefficiency ($1.2K/month), Fuel waste ($2.1K/month)
 Agents Generated: Custom RouteOptimizer + FuelManager agents
 Impact: 47% fuel savings, 3hrs → 15min planning time
 
-
-🎯 Success Criteria
+## Success Criteria
 Must Have:
 
-✅ Problem discovery from text input
-✅ LLM generates custom agent specs
-✅ Visual agent generation process
-✅ Before/after simulation
-✅ Business impact metrics
+- Problem discovery from text input
+- LLM generates custom agent specs
+- Visual agent generation process
+- Before/after simulation
+- Business impact metrics
 
 Nice to Have:
 
@@ -137,19 +135,17 @@ Show generated agent code
 Multiple demo scenarios
 Export results
 
-
-🏆 Judging Alignment
+## Judging Alignment
 
 Technical: Dynamic LLM-based agent generation vs static templates
 Business: Truly custom solutions, scales to any industry
 Creative: AI building AI - self-service problem → solution pipeline
 Beautiful: Clear visualization of generation process
 
-
-📝 License
+## License
 MIT
 
-🤝 Contributing
+## Contributing
 This is a hackathon project. Feel free to fork and experiment!
 
-Built with ❤️ by Team Kaizen
+Built with love by Team Kaizen
