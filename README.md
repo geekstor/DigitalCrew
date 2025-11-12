@@ -2,8 +2,6 @@
 
 > **"Describe your business. Get custom AI agents that run it."**
 
-Built for judges at [Hackathon Name]
-
 ---
 
 ## 🎯 The Problem
