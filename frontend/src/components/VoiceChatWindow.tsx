@@ -43,7 +43,7 @@ export function VoiceChatWindow({ onClose }: VoiceChatWindowProps) {
     <div className="fixed inset-0 bg-black/50 flex items-center justify-center z-50 p-4">
       <div className="bg-white rounded-3xl w-full max-w-md shadow-2xl overflow-hidden">
         {/* Header */}
-        <div className="bg-gradient-to-r from-[#00C68E] to-[#00A877] p-6 text-white">
+        <div className="bg-gradient-to-r from-[#6ADBCD] to-[#B8A2F7] p-6 text-white">
           <div className="flex items-center justify-between mb-4">
             <h3 className="text-white">Voice Chat</h3>
             <button 
@@ -59,7 +59,7 @@ export function VoiceChatWindow({ onClose }: VoiceChatWindowProps) {
             <div className={`relative w-24 h-24 rounded-full bg-white/20 flex items-center justify-center ${isListening ? 'animate-pulse' : ''}`}>
               <div className={`w-20 h-20 rounded-full bg-white/30 flex items-center justify-center ${isListening ? 'animate-pulse' : ''}`}>
                 <div className="w-16 h-16 rounded-full bg-white flex items-center justify-center">
-                  <Mic className="w-8 h-8 text-[#00C68E]" />
+                  <Mic className="w-8 h-8 text-[#6ADBCD]" />
                 </div>
               </div>
             </div>
@@ -78,8 +78,8 @@ export function VoiceChatWindow({ onClose }: VoiceChatWindowProps) {
 
           {/* AI Response */}
           {aiResponse && (
-            <div className="bg-[#00C68E]/5 rounded-2xl p-4 border border-[#00C68E]/20">
-              <div className="text-xs text-[#00C68E] mb-2 font-inter">AI Agent:</div>
+            <div className="bg-[#6ADBCD]/5 rounded-2xl p-4 border border-[#6ADBCD]/20">
+              <div className="text-xs text-[#6ADBCD] mb-2 font-inter">AI Agent:</div>
               <div className="text-sm">{aiResponse}</div>
             </div>
           )}
@@ -88,7 +88,7 @@ export function VoiceChatWindow({ onClose }: VoiceChatWindowProps) {
           {isListening && (
             <div className="text-center">
               <div className="inline-flex items-center gap-2 text-sm text-muted-foreground font-inter">
-                <div className="w-2 h-2 bg-[#00C68E] rounded-full animate-pulse" />
+                <div className="w-2 h-2 bg-[#6ADBCD] rounded-full animate-pulse" />
                 Listening...
               </div>
             </div>
@@ -96,11 +96,11 @@ export function VoiceChatWindow({ onClose }: VoiceChatWindowProps) {
         </div>
 
         {/* Footer */}
-        <div className="p-6 border-t border-gray-100">
+        <div className="p-6 border-t border-[#E5E7EB]">
           <Button
             onClick={() => setIsListening(!isListening)}
             variant={isListening ? "default" : "outline"}
-            className={`w-full rounded-full ${isListening ? 'bg-[#00C68E] hover:bg-[#00B380]' : ''}`}
+            className={`w-full rounded-full ${isListening ? 'bg-[#6ADBCD] hover:bg-[#4FD6C9]' : ''}`}
           >
             {isListening ? (
               <>

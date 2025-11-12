@@ -1,33 +1,30 @@
 import { Button } from "./ui/button";
 import { Play } from "lucide-react";
-import { useTranslation } from "react-i18next";
 
 interface HeroSectionProps {
   onGenerateClick: () => void;
 }
 
 export function HeroSection({ onGenerateClick }: HeroSectionProps) {
-  const { t } = useTranslation();
-  
   return (
     <section className="py-20 px-6 md:px-12 lg:px-24">
       <div className="max-w-7xl mx-auto">
         <div className="grid lg:grid-cols-2 gap-12 items-center">
           {/* Left Content */}
           <div className="space-y-6">
-            <h1 className="text-5xl md:text-6xl lg:text-7xl tracking-tight">
-              {t('hero.title')}
+            <h1 className="text-4xl md:text-5xl lg:text-6xl tracking-tight">
+              Describe your business.<br />Get an AI Agent that runs it for you.
             </h1>
             <p className="text-xl text-muted-foreground max-w-xl">
-              {t('hero.subtitle')}
+              Transform your business operations with intelligent AI agents that understand your needs and automate complex workflows.
             </p>
             <div className="flex flex-col sm:flex-row gap-4 pt-4">
               <Button 
                 size="lg" 
-                className="bg-[#00C68E] hover:bg-[#00B380] text-white rounded-full px-8 shadow-lg shadow-[#00C68E]/20"
+                className="bg-[#6ADBCD] hover:bg-[#4FD6C9] text-white rounded-full px-8 shadow-lg shadow-[#6ADBCD]/20"
                 onClick={onGenerateClick}
               >
-                {t('hero.generateButton')}
+                Generate my Agent
               </Button>
               <Button 
                 size="lg" 
@@ -35,7 +32,7 @@ export function HeroSection({ onGenerateClick }: HeroSectionProps) {
                 className="rounded-full px-8 border-2"
               >
                 <Play className="mr-2 h-4 w-4" />
-                {t('hero.demoButton')}
+                Watch Demo
               </Button>
             </div>
           </div>
@@ -50,8 +47,8 @@ export function HeroSection({ onGenerateClick }: HeroSectionProps) {
               />
             </div>
             {/* Accent decoration */}
-            <div className="absolute -bottom-4 -right-4 w-32 h-32 bg-[#00C68E] opacity-10 rounded-full blur-3xl" />
-            <div className="absolute -top-4 -left-4 w-24 h-24 bg-[#00C68E] opacity-10 rounded-full blur-3xl" />
+            <div className="absolute -bottom-4 -right-4 w-32 h-32 bg-gradient-to-br from-[#6ADBCD] to-[#B8A2F7] opacity-10 rounded-full blur-3xl" />
+            <div className="absolute -top-4 -left-4 w-24 h-24 bg-[#6ADBCD] opacity-10 rounded-full blur-3xl" />
           </div>
         </div>
       </div>
